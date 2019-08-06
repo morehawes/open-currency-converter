@@ -2,7 +2,7 @@
 Contributors: dartiss
 Tags: cash, conversion, convert, currency, money, sterling
 Requires at least: 4.6
-Tested up to: 4.9
+Tested up to: 5.2.2
 Requires PHP: 5.3
 Stable tag: 1.4.4
 License: GPLv2 or later
@@ -35,6 +35,8 @@ Technical specification...
 * Fully internationalized, ready for translations. **If you would like to add a translation to this plugin then please head to our [Translating WordPress](https://translate.wordpress.org/projects/wp-plugins/artiss-currency-converter "Translating WordPress") page**
 
 Please visit the [Github page](https://github.com/dartiss/open-currency-converter "Github") for the latest code development, planned enhancements and known issues.
+
+Icons made by [Freepik](https://www.flaticon.com/authors/freepik "Freepik") from [www.flaticon.co](https://www.flaticon.com/ "Flaticon") is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0 "Creative Commons BY 3.0").
 
 == Getting Started ==
 
