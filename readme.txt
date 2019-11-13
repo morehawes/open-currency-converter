@@ -2,7 +2,7 @@
 Contributors: dartiss
 Tags: cash, conversion, convert, currency, money, sterling
 Requires at least: 4.6
-Tested up to: 5.2.2
+Tested up to: 5.3
 Requires PHP: 5.3
 Stable tag: 1.4.4
 License: GPLv2 or later
