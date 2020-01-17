@@ -23,11 +23,11 @@ if ( ( !empty( $_POST ) ) && ( check_admin_referer( 'options' , 'open_currency_c
 
     $error = __( 'The App ID is invalid.', 'artiss-currency-converter' );
 	if ( isset( $_POST[ 'occ_app_id' ] ) ) {
-		if ( strlen( $_POST[ 'occ_app_id' ] ) != 32 ) {
+		if ( 32 !== strlen( $_POST[ 'occ_app_id' ] ) ) {
 			$fetch_options = false;
 		} else {
 			$file = occ_get_file( 'https://openexchangerates.org/api/latest.json?app_id=' . sanitize_text_field( $_POST[ 'occ_app_id' ] ) );
-			if ( $file[ 'rc' ] != 0 ) {
+			if ( 0 !== $file[ 'rc' ] ) {
 				$error = __( 'Could not validate App ID. Please try again later.', 'artiss-currency-converter' );
 				$fetch_options = false;
 			} else {

@@ -25,7 +25,7 @@ function occ_convert_shortcode( $paras = '', $content = '' ) {
 
     // If content provided, assume this to be the template
 
-    if ( $content != '' ) { $template = $content; }
+    if ( '' !== $content ) { $template = $content; }
 
     // Perform currency conversion using supplied parameters
 
@@ -33,4 +33,3 @@ function occ_convert_shortcode( $paras = '', $content = '' ) {
 
 }
 add_shortcode( 'convert', 'occ_convert_shortcode' );
-?>

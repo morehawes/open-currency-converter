@@ -1,10 +1,11 @@
 === Open Currency Converter ===
 Contributors: dartiss
+Donate link: https://artiss.blog/donate
 Tags: cash, conversion, convert, currency, money, sterling
 Requires at least: 4.6
 Tested up to: 5.3
 Requires PHP: 5.3
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +13,7 @@ Convert currencies within the text of a post or page.
 
 == Description ==
 
-If you have a wish to convert currencies "on the fly" within the text of a post or page then this is the plugin for you! It's free to download, free to use and advert free - if you think you have to pay for something you're doing it wrong!
+🚀 If you have a wish to convert currencies "on the fly" within the text of a post or page then this is the plugin for you! It's free to download, free to use and advert free - if you think you have to pay for something you're doing it wrong!
 
 So, let's say you run a UK based site and will refer to currencies in GBP. However, the majority of visitors are from the US, so you may have a wish to also show the dollar equivalent. Using this plugin you can do this without having to work out the conversion and then re-visit it in future to take into account conversion changes.
 
@@ -27,16 +28,25 @@ Key features include...
 * Administration screen allowing you to define defaults and to view current exchange rates
 * And much, much more!
 
-Technical specification...
-
-* Licensed under [GPLv2 (or later)](http://wordpress.org/about/gpl/ "GNU General Public License"). The [Open Source Exchange Rates API](http://josscrowcroft.github.com/open-exchange-rates/ "Open Source Exchange Rates API") is kindly provided by [Joss Crowcroft](http://www.josscrowcroft.com/ "Joss Crowcroft")
-* Designed for both single and multi-site installations
-* PHP7 compatible
-* Fully internationalized, ready for translations. **If you would like to add a translation to this plugin then please head to our [Translating WordPress](https://translate.wordpress.org/projects/wp-plugins/artiss-currency-converter "Translating WordPress") page**
-
 Please visit the [Github page](https://github.com/dartiss/open-currency-converter "Github") for the latest code development, planned enhancements and known issues.
 
 == Getting Started ==
+
+🔑 **Getting Your App Key**
+
+Open Currency Converter gets its data from the Open Exchange Rates website (which is not associated with this plugin nor the developer). This site requires an App Key to be specified for it to work. This is to prevent over-use of the exchange system and to provide premium features for users who wish to pay for them. Having a premium plan does not add any extra features to this plugin and is not a requirement.
+
+To get your App Key...
+
+1. [Sign up on the Open Exchange Rates site](https://openexchangerates.org/signup/free) - this link will take you to the free option but the site does require personal information.
+2. You should now be at [your account screen](https://openexchangerates.org/account).
+3. Click on the "App IDs" option in the side menu.
+4. An App ID should be listed on the right hand side - copy this ID.
+5. Head back to the admin of your website and select the Settings -> Open Currency menu.
+6. Paste the App ID into the equivalent field at the top of the settings screen.
+7. Click the "Save Changes" button.
+
+**Using the Shortcode**
 
 To add to your site simply use the `[convert]` shortcode. For example...
 
@@ -44,17 +54,11 @@ To add to your site simply use the `[convert]` shortcode. For example...
 
 This would convert 49.99 GBP to USD.
 
-**Getting Your App Key**
-
-Open Currency Converter gets its data from the Open Exchange Rates website (which is not associated with this plugin nor the developer). This site requires an App Key to be specified for it to work. This is to prevent over-use of the exchange system and to provide premium features for users who wish to pay for them. Having a premium plan does not add any extra features to this plugin and is not a requirement.
-
-To get your App Key [sign up on the Open Exchange Rates site](https://openexchangerates.org/signup/free "Sign Up - Open Exchange Rates"). Now head to your site's admin and under "Setting" you should click on "Open Currency". Enter the App Key into the appropriate field and Save the results.
-
-**Disclaimer**
+⚠️ **Disclaimer**
 
 The exchange rate data is provided for free via the [Open Source Exchange Rates](http://openexchangerates.org/ "Open Source Exchange Rates") project. Its accuracy and availability are never guaranteed, and there's no warranty provided.
 
-== The Options Screen ==
+== 🖥 The Options Screen ==
 
 Once the plugin is activated two new administration screens will be present.
 
@@ -63,7 +67,7 @@ Once the plugin is activated two new administration screens will be present.
 
 Before using this plugin it is highly recommended that you review the Options screen and change any values, as appropriate. You will also need to sign up for and enter an App Key before conversions will work.
 
-== Using the Shortcode ==
+== 🗜 Using the Shortcode ==
 
 The shortcode of '[convert]' has the following parameters that you may specify...
 
@@ -85,7 +89,7 @@ This would convert 50 from US dollars to UK pounds and output the result without
 
 If the conversion can't be done then an appropriate error message will be output instead. If you wish to suppress these messages then you need to use a template (see the later section on this) - in this case no output will be generated in the case of an error.
 
-== Using Templates ==
+== 🧩 Using Templates ==
 
 The template option allows you to specify other information to be output along with the conversion result. None of the template will be output if any error occurs, including any error messages, allowing you to suppress any conversion text in the case of a problem.
 
@@ -119,7 +123,7 @@ For example...
 
 `<?php echo get_conversion( 'number=49.99&from=gbp&to=usd' ); ?>`
 
-== Global conversion variables ==
+== 🌍 Global conversion variables ==
 
 For the use of developers, 2 global variables have been added which, if assigned within your site code, will override the conversion codes.
 
@@ -147,15 +151,23 @@ Voila! It's ready to go.
 
 [Learn more about my version numbering methodology](https://artiss.blog/2016/09/wordpress-plugin-versioning/ "WordPress Plugin Versioning")
 
+= 1.4.5 =
+* Enhancement: Improved the help on both admin screens
+* Maintenance: Added donation links back in
+* Maintenance: Added in some missing flags
+* Maintenance: Improved the README instructions, based on feedback
+* Maintenance: Added Github links to plugin meta
+* Bug: Fixed `Use of undefined constant global_convert_from` PHP warning
+
 = 1.4.4 =
 * Maintenance: Removed donation links
 
 = 1.4.3 =
+* Enhancement: The shortcode is now loaded at all times, as loading only outside of admin didn’t add any performance improvement
 * Maintenance: Updated this README to better reflect the new plugin directory format
 * Maintenance: Corrected links to artiss.blog
 * Maintenance: This plugin now requires a minimum WordPress level of 4.6, so changes were made to accommodate that, including the removal of various language features
 * Maintenance: Added in a couple of missing country flags
-* Enhancement: The shortcode is now loaded at all times, as loading only outside of admin didn’t add any performance improvement
 
 = 1.4.2 =
 * Maintenance: Updated API URL, including new SSL addresses
@@ -178,31 +190,31 @@ Voila! It's ready to go.
 * Maintenance: Added a text domain and domain path, as well as correcting the domain name.
 
 = 1.3 =
+* Enhancement: Added some swizzy new currency flags.
+* Enhancement: Now handles commas in your provided currency amount. It even adds them in the result. Nice.
 * Maintenance: New name and less advertising. We're nice like that.
 * Maintenance: Removed the specific admin menu because, well, it wasn't needed. Moved the plugin options to the general Admin Options and exchange rates to Tools.
 * Maintenance: Added support for WordPress 4.3 admin menu changes.
 * Maintenance: Re-written the README and on-screen options to be clearer and, more importantly, make sure people realize you can get the API data for FREE!
-* Enhancement: Added some swizzy new currency flags.
-* Enhancement: Now handles commas in your provided currency amount. It even adds them in the result. Nice.
 * Bug: We've been on PHP error hunt... we're not scared.. we went and found some big ones... FIXED!
 
 = 1.2 =
+* Enhancement: Added message to admin screen if App Key not set
 * Maintenance: Updated advertising engine code to latest version
 * Maintenance: Updated README Parser function name
 * Bug: Corrected the user permissions
-* Enhancement: Added message to admin screen if App Key not set
 
 = 1.1.1 =
 * Bug: Error on activation when installed alongside certain other plugins which share a particular function
 
 = 1.1 =
+* Enhancement: Country flag icons, where appropriate, are now shown on the rates screen
+* Enhancement: Added global variables for overriding default currencies
+* Enhancement: Conversion in rates screen now shows results as 2 DP
 * Maintenance: Advertisements now appear in the options screens, but implemented option to switch off if donated
 * Maintenance: New App Key requirements implemented
 * Maintenance: Put in place minimum values for caching - no longer able to switch off
 * Bug: Fixed internationalization, including rates screens which was not being translated
-* Enhancement: Country flag icons, where appropriate, are now shown on the rates screen
-* Enhancement: Added global variables for overriding default currencies
-* Enhancement: Conversion in rates screen now shows results as 2 DP
 
 = 1.0.1 =
 * Fixed bug where currency output that contained a thousand separator was being interpreted as an error message!
@@ -212,5 +224,5 @@ Voila! It's ready to go.
 
 == Upgrade Notice ==
 
-= 1.4.4 =
-* Minor maintenance change
+= 1.4.5 =
+* Minor bug fixes and maintenance changes

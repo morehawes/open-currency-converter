@@ -25,7 +25,7 @@ function occ_get_rates( $cache = 60 ) {
 
     // Check if a cached version already exists - if so, return it
 
-    if ( strtolower( $cache ) != 'no' ) { $rates = get_transient( $cache_key ); }
+    if ( 'no' !== strtolower( $cache ) ) { $rates = get_transient( $cache_key ); }
 
     // If cache doesn't exist use CURL to get the exchange rates
 
@@ -33,7 +33,7 @@ function occ_get_rates( $cache = 60 ) {
 
         $options = occ_get_options();
 
-        if ( !isset( $options[ 'id' ] ) or $options[ 'id' ] == '' ) {
+        if ( !isset( $options[ 'id' ] ) or '' === $options[ 'id' ] ) {
 
             $rates = '#' . __( 'No App ID has been setup - please set this in the options screen', 'artiss-currency-converter' );
 
@@ -41,7 +41,7 @@ function occ_get_rates( $cache = 60 ) {
 
             $file = occ_get_file( 'https://openexchangerates.org/api/latest.json?app_id=' . $options[ 'id' ] );
 
-            if ( $file[ 'rc' ] != 0 ) {
+            if ( 0 !== $file[ 'rc' ] ) {
 
                 $rates = '#' . __( 'Could not fetch exchange rate information', 'artiss-currency-converter' );
 
@@ -59,7 +59,7 @@ function occ_get_rates( $cache = 60 ) {
 
                 // Check that something was returned
 
-                if ( $rates == '' ) {
+                if ( '' === $rates ) {
 
                     $rates = '#' . __( 'No exchange rate information returned', 'artiss-currency-converter' );
 
@@ -67,7 +67,7 @@ function occ_get_rates( $cache = 60 ) {
 
                     // Save to cache
 
-                    if ( strtolower( $cache ) != 'no' ) { set_transient( $cache_key, $rates, 60 * $cache ); }
+                    if ( 'no' !== strtolower( $cache ) ) { set_transient( $cache_key, $rates, 60 * $cache ); }
                 }
             }
         }
@@ -95,7 +95,7 @@ function occ_get_codes( $cache = 24 ) {
 
     // Check if a cached version already exists - if so, return it
 
-    if ( strtolower( $cache ) != 'no' ) { $codes = get_transient( $cache_key ); }
+    if ( 'no' !== strtolower( $cache ) ) { $codes = get_transient( $cache_key ); }
     $codes = false;
 
     // If cache doesn't exist use CURL to get the currency codes
@@ -106,13 +106,13 @@ function occ_get_codes( $cache = 24 ) {
 
 		if ( isset( $options[ 'id' ] ) ) { $file = occ_get_file( 'https://openexchangerates.org/api/currencies.json?app_id=' . $options[ 'id' ] ); }
 
-        if ( !isset( $options[ 'id' ] ) or $options[ 'id' ] == '' ) {
+        if ( !isset( $options[ 'id' ] ) or '' === $options[ 'id' ] ) {
 
             $rates = '#' . __( 'No App ID has been setup - please set this in the options screen', 'artiss-currency-converter' );
 
         } else {
 
-            if ( $file[ 'rc' ] != 0 ) {
+            if ( 0 !== $file[ 'rc' ] ) {
 
                 $rates = '#' . __( 'Could not fetch currency code information', 'artiss-currency-converter' );
 
@@ -126,7 +126,7 @@ function occ_get_codes( $cache = 24 ) {
 
                 // Check that something was returned
 
-                if ( $codes == '' ) {
+                if ( '' === $codes ) {
 
                     $rates = '#' . __( 'No currency code information returned', 'artiss-currency-converter' );
 
@@ -134,7 +134,7 @@ function occ_get_codes( $cache = 24 ) {
 
                     // Save to cache
 
-                    if ( strtolower( $cache ) != 'no' ) { set_transient( $cache_key, $codes, 3600 * $cache ); }
+                    if ( 'no' !== strtolower( $cache ) ) { set_transient( $cache_key, $codes, 3600 * $cache ); }
                 }
             }
         }
@@ -240,4 +240,3 @@ function occ_get_parameters( $input, $para, $divider = '=', $seperator = '&' ) {
     }
     return $content;
 }
-?>

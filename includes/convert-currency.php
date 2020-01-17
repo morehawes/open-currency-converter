@@ -31,9 +31,9 @@ function occ_convert_currency( $number = '', $from = '', $to = '', $dp = '', $te
 
     // If no template has been provided, create a default one
 
-    if ( $template == '' ) { $template = $tag; } else { $suppress_errors = true; }
+    if ( '' === $template ) { $template = $tag; } else { $suppress_errors = true; }
 
-    if ( $number == '' ) {
+    if ( '' === $number ) {
 
         // Report an error if no number was supplied
 
@@ -49,7 +49,7 @@ function occ_convert_currency( $number = '', $from = '', $to = '', $dp = '', $te
     // If using a template and an error is returned, return nothing.
     // Otherwise, replace the figure in the template
 
-    if ( substr( $result, 0, 1 ) == '#' ) {
+    if ( '#' === substr( $result, 0, 1 ) ) {
         if ( $suppress_errors ) {
             return;
         } else {
@@ -89,21 +89,21 @@ function occ_perform_conversion( $number = '', $from = '', $to = '', $dp = '' ) 
 
     // If any of the details are missing, get them from the default options that are set
 
-    if ( $from == '' ) {
-        if ( defined( global_convert_from ) ) {
+    if ( '' === $from ) {
+        if ( defined( "global_convert_from" ) ) {
             $from = global_convert_from;
         } else {
             $from = $options[ 'from' ];
         }
     }
-    if ( $to == '' ) {
-        if ( defined( global_convert_to ) ) {
+    if ( '' === $to ) {
+        if ( defined( "global_convert_to" ) ) {
             $to = global_convert_to;
         } else {
             $to = $options[ 'to' ];
         }
     }
-    if ( $dp == '' ) { $dp = $options[ 'dp' ]; }
+    if ( '' === $dp ) { $dp = $options[ 'dp' ]; }
 
     // Get exchange rates from array
 
@@ -114,7 +114,7 @@ function occ_perform_conversion( $number = '', $from = '', $to = '', $dp = '' ) 
         $from = $rates_array[ strtoupper( $from ) ];
         $to = $rates_array[ strtoupper( $to ) ];
 
-        if ( ( $from == '' ) or ( $to == '' ) ) {
+        if ( ( '' === $from ) or ( '' === $to ) ) {
 
             $error = '#' . __( 'Could not fetch one of the required exchange rates', 'artiss-currency-converter' );
 
@@ -142,7 +142,6 @@ function occ_perform_conversion( $number = '', $from = '', $to = '', $dp = '' ) 
         $error = $rates_array;
     }
 
-    if ( $error != '' ) { $result = $error; }
+    if ( '' !== $error ) { $result = $error; }
     return $result;
 }
-?>

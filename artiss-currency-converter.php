@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Open Currency Converter
-Plugin URI: https://wordpress.org/plugins/artiss-currency-converter/
+Plugin URI: https://github.com/dartiss/open-currency-converter
 Description: Convert currencies within the text of a post or page.
-Version: 1.4.4
+Version: 1.4.5
 Author: David Artiss
 Author URI: https://artiss.blog
 Text Domain: artiss-currency-converter
@@ -18,7 +18,7 @@ Text Domain: artiss-currency-converter
 * @since	1.0
 */
 
-define( 'open_currency_converter_version', '1.4.4' );
+define( 'open_currency_converter_version', '1.4.5' );
 
 /**
 * Main Includes
@@ -28,19 +28,16 @@ define( 'open_currency_converter_version', '1.4.4' );
 * @since	1.0
 */
 
-$functions_dir = plugin_dir_path( __FILE__ ) . 'includes/';
-
 // Include all the various functions
 
-include_once( $functions_dir . 'admin-config.php' );        	// Assorted admin configuration changes
+include_once( plugin_dir_path( __FILE__ ) . 'includes/admin-config.php' );        	// Assorted admin configuration changes
 
-include_once( $functions_dir . 'get-options.php' );             // Fetch/create default options
+include_once( plugin_dir_path( __FILE__ ) . 'includes/get-options.php' );			// Fetch/create default options
 
-include_once( $functions_dir . 'shared-functions.php' );		// Shared functionality
+include_once( plugin_dir_path( __FILE__ ) . 'includes/shared-functions.php' );		// Shared functionality
 
-include_once( $functions_dir . 'convert-currency.php' );		// Main code to perform currency conversion
+include_once( plugin_dir_path( __FILE__ ) . 'includes/convert-currency.php' );		// Main code to perform currency conversion
 
-include_once( $functions_dir . 'shortcodes.php' );	        	// Shortcodes
+include_once( plugin_dir_path( __FILE__ ) . 'includes/shortcodes.php' );	        // Shortcodes
 
-include_once( $functions_dir . 'functions.php' );	        	// PHP function calls
-?>
+include_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php' );	        	// PHP function calls

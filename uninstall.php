@@ -16,4 +16,3 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 // Remove options
 delete_option( 'artiss_currency_converter' ); // Old version
 delete_option( 'open_currency_converter' );
-?>
