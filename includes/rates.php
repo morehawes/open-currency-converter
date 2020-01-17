@@ -31,7 +31,7 @@ if ( ( !empty( $_POST ) ) && ( check_admin_referer( 'rates' , 'open_currency_con
 <div class="wrap">
 <h1><?php _e( 'Open Currency Converter Rates', 'artiss-currency-converter' ); ?></h1>
 
-<?php if ( isset( $options[ 'id' ] ) && $options[ 'id' ] != '' ) { ?>
+<?php if ( isset( $options[ 'id' ] ) && '' !== $options[ 'id' ] ) { ?>
 
 <p><?php _e( 'Below are the current exchange rates. All rates are in relation to USD. Alternatively use the following form to perform a quick conversion.', 'artiss-currency-converter' );?></p>
 
@@ -43,7 +43,7 @@ if ( ( !empty( $_POST ) ) && ( check_admin_referer( 'rates' , 'open_currency_con
 <?php
 foreach( $rates_array as $cc => $exchange_rate ){
     echo '<option value="' . esc_html( $cc ). '"';
-    if ( isset( $options[ 'from' ] ) && $options[ 'from' ] == $cc ) { echo " selected='selected'"; }
+    if ( isset( $options[ 'from' ] ) && $cc === $options[ 'from' ] ) { echo " selected='selected'"; }
     echo '>' . esc_html( $cc ) . '</option>';
     next( $rates_array );
 }
@@ -54,7 +54,7 @@ foreach( $rates_array as $cc => $exchange_rate ){
 <?php
 foreach( $rates_array as $cc => $exchange_rate ){
     echo '<option value="' . esc_html( $cc ) . '"';
-    if ( isset( $options[ 'to' ] ) && $options[ 'to' ] == $cc ) { echo " selected='selected'"; }
+    if ( isset( $options[ 'to' ] ) && $options[ 'to' ] === $cc ) { echo " selected='selected'"; }
     echo '>' . esc_html( $cc ) . '</option>';
     next( $rates_array );
 }
@@ -82,7 +82,7 @@ foreach ( $rates_array as $cc => $exchange_rate ) {
     $flag_dir = plugins_url( 'images/flags/', dirname(__FILE__) );
     $flag_file = strtolower( $cc ) . '.png';
     $flag_name = __( 'Flag', 'artiss-currency-converter' );
-    if ( $codes_array[ $cc ] != '' ) { $flag_name = sprintf( __( 'Flag for %s', 'artiss-currency-converter' ), $codes_array[ $cc ] ); }
+    if ( '' !== $codes_array[ $cc ] ) { $flag_name = sprintf( __( 'Flag for %s', 'artiss-currency-converter' ), $codes_array[ $cc ] ); }
 
     echo '<img src="' . $flag_dir . $flag_file . '" alt="' . $flag_name . '" title="' . $flag_name . '" width="16px" height="11px">';
 

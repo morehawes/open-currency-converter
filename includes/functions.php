@@ -31,4 +31,3 @@ function get_conversion( $paras = '' ) {
 
     return occ_convert_currency( $number, $from, $to, $dp, '' );
 }
-?>

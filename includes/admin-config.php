@@ -21,7 +21,7 @@ function occ_show_admin_messages() {
     $options = occ_get_options();
 	$screen = get_current_screen();
 
-    if ( ( ( !isset( $options[ 'id' ] ) ) or ( $options[ 'id' ] == '' ) ) && ( current_user_can( 'edit_posts' ) && ( $screen->id != 'settings_page_options' ) ) ) {
+    if ( ( ( !isset( $options[ 'id' ] ) ) or ( '' === $options[ 'id' ] ) ) && ( current_user_can( 'edit_posts' ) && ( $screen->id !== 'settings_page_options' ) ) ) {
         echo '<div id="message" class="error"><p>' . __( '<a href="options-general.php?page=options">A valid App ID must be specified</a> before Open Currency Converter will work.', 'artiss-currency-converter' ) . '</p></div>';
 		$screen = get_current_screen();
     }
@@ -70,7 +70,13 @@ add_filter( 'plugin_action_links', 'occ_add_settings_link', 10, 2 );
 
 function occ_set_plugin_meta( $links, $file ) {
 
-	if ( strpos( $file, 'artiss-currency-converter.php' ) !== false ) { $links = array_merge( $links, array( '<a href="http://wordpress.org/support/plugin/artiss-currency-converter">' . __( 'Support', 'artiss-currency-converter' ) . '</a>' ) ); }
+	if ( strpos( $file, 'artiss-currency-converter.php' ) !== false ) {
+
+		$links = array_merge( $links, array( '<a href="http://wordpress.org/support/plugin/artiss-currency-converter">' . __( 'Support', 'artiss-currency-converter' ) . '</a>' ) ); 
+
+		$links = array_merge( $links, array( '<a href="https://github.com/dartiss/open-currency-converter">' . __( 'Github', 'artiss-currency-converter' ) . '</a>' ) );	
+
+	}
 
 	return $links;
 }
@@ -122,9 +128,11 @@ function occ_add_options_help() {
     global $occ_options_hook;
     $screen = get_current_screen();
 
-    if ( $screen->id != $occ_options_hook ) { return; }
+    if ( $screen->id !== $occ_options_hook ) { return; }
 
-    $screen -> add_help_tab( array( 'id' => 'options-help-tab', 'title'	=> __( 'Help', 'artiss-currency-converter' ), 'content' => occ_options_help() ) );
+    $screen -> add_help_tab( array( 'id' => 'options-help-tab', 'title'	=> __( '🤝 Help', 'artiss-currency-converter' ), 'content' => occ_help_screen( 'options' ) ) );
+
+    $screen -> add_help_tab( array( 'id' => 'options-links-tab', 'title'	=> __( '🔗 Links', 'artiss-currency-converter' ), 'content' => occ_help_screen( 'options', 'links' ) ) );
 }
 
 /**
@@ -142,9 +150,11 @@ function occ_add_rates_help() {
     global $occ_rates_hook;
     $screen = get_current_screen();
 
-    if ( $screen->id != $occ_rates_hook ) { return; }
+    if ( $screen->id !== $occ_rates_hook ) { return; }
 
-    $screen -> add_help_tab( array( 'id' => 'rates-help-tab', 'title' => __( 'Help', 'artiss-currency-converter' ), 'content' => occ_rates_help() ) );
+    $screen -> add_help_tab( array( 'id' => 'rates-help-tab', 'title' => __( '🤝 Help', 'artiss-currency-converter' ), 'content' => occ_help_screen( 'rates' ) ) );
+
+    $screen -> add_help_tab( array( 'id' => 'rates-links-tab', 'title'	=> __( '🔗 Links', 'artiss-currency-converter' ), 'content' => occ_help_screen( 'rates', 'links' ) ) );
 }
 
 /**
@@ -176,39 +186,49 @@ function occ_rates() {
 }
 
 /**
-* Options Help
+* Help Screen
 *
-* Return help text for options screen
-*
-* @since	1.0
-*
-* @return	string	Help Text
-*/
-
-function occ_options_help() {
-
-	$help_text = '<p>' . __( "This screen allows you to set some default options. If, when using the shortcode or function call, you don't specify a particular parameter then the default from this screen will be used.", 'artiss-currency-converter' ) . '</p>';
-	$help_text .= '<p>' . __( "Before you can begin, though, you need to specify an API Key - <a href=\"https://openexchangerates.org/signup/free\">get one here for free</a>!", 'artiss-currency-converter' ) . '</p>';
-	$help_text .= '<p>' . __( 'When that\'s all done you can also set caching times - this is to limit the regularity of updates to the exchange rates and currency codes. The former is updated hourly and the latter ad-hoc, so retrieving this information everytime is not required.', 'artiss-currency-converter' ) . '</p>';
-
-	return $help_text;
-}
-
-/**
-* Rates Help
-*
-* Return help text for exchange rates screen
+* Return help text for options and rates screen
 *
 * @since	1.0
 *
-* @return	string	Help Text
+* @param    string 	$screen 	Which screen the text is for
+* @param 	string 	$tab 		Which tab this is for 
+*
+* @return	string				Help Text
 */
 
-function occ_rates_help() {
+function occ_help_screen( $screen, $tab = '' ) {
 
-	$help_text = '<p>' . __( 'Use this screen to view the current exchange rates along with all the currency codes. All exchange rates are in relation to the US Dollar.', 'artiss-currency-converter' ) . '</p>';
-	$help_text .= '<p>' . __( 'You can also perform a currency conversion from this screen too using the options at the very top.', 'artiss-currency-converter' ) . '</p>';
+	$help_text = '';
+
+	if ( $screen == 'options' && $tab != 'links' ) {
+
+		$help_text .= '<p>' . __( "This screen allows you to set some default options. If, when using the shortcode or function call, you don't specify a particular parameter then the default from this screen will be used.", 'artiss-currency-converter' ) . '</p>';
+		$help_text .= '<p>' . __( "Before you can begin, though, you need to specify an API Key - <a href=\"https://openexchangerates.org/signup/free\">get one here for free</a>!", 'artiss-currency-converter' ) . '</p>';
+		$help_text .= '<p>' . __( 'When that\'s all done you can also set caching times - this is to limit the regularity of updates to the exchange rates and currency codes. The former is updated hourly and the latter ad-hoc, so retrieving this information everytime is not required.', 'artiss-currency-converter' ) . '</p>';
+	}
+
+
+	if ( $screen == 'rates' && $tab != 'links' ) {
+
+		$help_text .= '<p>' . __( 'Use this screen to view the current exchange rates along with all the currency codes. All exchange rates are in relation to the US Dollar.', 'artiss-currency-converter' ) . '</p>';
+		$help_text .= '<p>' . __( 'You can also perform a currency conversion from this screen too using the options at the very top.', 'artiss-currency-converter' ) . '</p>';
+	}
+
+	if ( $tab == 'links' ) {
+
+		$help_text .= '<p><strong>' . __( 'For more information:', 'artiss-currency-converter' ) . '</strong></br>';
+		$help_text .= '📖 <a href="https://wordpress.org/plugins/artiss-currency-converter/">' . __( 'Plugin Documentation', 'artiss-currency-converter' ) . '</a></br>';
+		$help_text .= '📣 <a href="https://wordpress.org/support/plugin/artiss-currency-converter/">' . __( 'Support Forum', 'artiss-currency-converter' ) . '</a></br>';
+		$help_text .= '🐞 <a href="https://github.com/dartiss/open-currency-converter/issues">' . __( 'Report an issue or suggest an enhancement', 'artiss-currency-converter' ) . '</a></p>';	
+
+		$help_text .= '<p>💰 <a href="https://openexchangerates.org/">' . __( 'Open Exchange Rates', 'artiss-currency-converter' ) . '</a></p>';			
+
+		$help_text .= '<p>⭐️ <a href="https://wordpress.org/support/plugin/artiss-currency-converter/reviews/#new-post">' . __( 'Write a review', 'artiss-currency-converter' ) . '</a></br>';
+		$help_text .= '💳 <a href="https://artiss.blog/donate">' . __( 'Donate if you like this plugin', 'artiss-currency-converter' ) . '</a></p>';
+
+	}
 
 	return $help_text;
 }
-?>

@@ -37,4 +37,3 @@ function occ_get_options() {
 
 	return $options;
 }
-?>
