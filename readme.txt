@@ -1,15 +1,15 @@
 === Open Currency Converter ===
 Contributors: dartiss
 Donate link: https://artiss.blog/donate
-Tags: cash, conversion, convert, currency, money, sterling
+Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
-Tested up to: 5.3
+Tested up to: 5.6
 Requires PHP: 5.3
 Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Convert currencies within the text of a post or page.
+💵 Convert currencies within the text of a post or page.
 
 == Description ==
 
@@ -28,7 +28,9 @@ Key features include...
 * Administration screen allowing you to define defaults and to view current exchange rates
 * And much, much more!
 
-Please visit the [Github page](https://github.com/dartiss/open-currency-converter "Github") for the latest code development, planned enhancements and known issues.
+Iconography is courtesy of the very talented [Janki Rathod](https://www.fiverr.com/jankirathore) ♥️
+
+👉 Please visit the [Github page](https://github.com/dartiss/open-currency-converter "Github") for the latest code development, planned enhancements and known issues 👈
 
 == Getting Started ==
 
@@ -149,7 +151,7 @@ Voila! It's ready to go.
 
 == Changelog ==
 
-[Learn more about my version numbering methodology](https://artiss.blog/2016/09/wordpress-plugin-versioning/ "WordPress Plugin Versioning")
+I use semantic versioning, with the first release being 1.0.
 
 = 1.4.5 =
 * Enhancement: Improved the help on both admin screens
