@@ -3,7 +3,7 @@ Contributors: dartiss
 Donate link: https://artiss.blog/donate
 Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
-Tested up to: 5.8
+Tested up to: 6.0
 Requires PHP: 5.3
 Stable tag: 1.4.5
 License: GPLv2 or later
