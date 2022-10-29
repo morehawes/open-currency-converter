@@ -3,8 +3,8 @@ Contributors: dartiss
 Donate link: https://artiss.blog/donate
 Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
-Tested up to: 5.8
-Requires PHP: 5.3
+Tested up to: 6.1
+Requires PHP: 7.4
 Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
