@@ -5,7 +5,7 @@ Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
 Tested up to: 6.1
 Requires PHP: 7.4
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,9 @@ Voila! It's ready to go.
 
 I use semantic versioning, with the first release being 1.0.
 
+= 1.4.6 =
+* Bug: Fixed a bug where an empty array wasn't recognised as such, causing cascading errors
+
 = 1.4.5 =
 * Enhancement: Improved the help on both admin screens
 * Maintenance: Added donation links back in
@@ -226,5 +229,5 @@ I use semantic versioning, with the first release being 1.0.
 
 == Upgrade Notice ==
 
-= 1.4.5 =
-* Minor bug fixes and maintenance changes
+= 1.4.6 =
+* Minor bug fix
