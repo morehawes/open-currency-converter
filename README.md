@@ -2,6 +2,10 @@
 
 <img src="https://ps.w.org/artiss-currency-converter/assets/icon-128x128.png" align="left">If you have a wish to convert currencies "on the fly" within the text of a post or page then this is the plugin for you! It's free to download, free to use and advert free - if you think you have to pay for something you're doing it wrong!
 
+**Note:**
+**This plugin will no longer be updated, other than for critical security issues. During December 2024, it will be formally closed.**
+**[Find out more here](https://wordpress.org/support/topic/important-please-read-before-posting-5/), including, if you’re a developer, how you can adopt it.**
+
 So, let's say you run a UK based site and will refer to currencies in GBP. However, the majority of visitors are from the US, so you may have a wish to also show the dollar equivalent. Using this plugin you can do this without having to work out the conversion and then re-visit it in future to take into account conversion changes.
 
 Features include...
