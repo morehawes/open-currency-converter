@@ -1,6 +1,6 @@
 # Open Currency Converter
 
-<img src="https://ps.w.org/artiss-currency-converter/assets/icon.svg" align="left" style="padding-right: 20px">If you have a wish to convert currencies "on the fly" within the text of a post or page then this is the plugin for you! It's free to download, free to use and advert free - if you think you have to pay for something you're doing it wrong!
+<img src="https://ps.w.org/artiss-currency-converter/assets/icon.svg" width=128px align="left" style="padding-right: 20px">If you have a wish to convert currencies "on the fly" within the text of a post or page then this is the plugin for you! It's free to download, free to use and advert free - if you think you have to pay for something you're doing it wrong!
 
 So, let's say you run a UK based site and will refer to currencies in GBP. However, the majority of visitors are from the US, so you may have a wish to also show the dollar equivalent. Using this plugin you can do this without having to work out the conversion and then re-visit it in future to take into account conversion changes.
 
