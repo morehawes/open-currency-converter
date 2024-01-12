@@ -74,7 +74,7 @@ function occ_set_plugin_meta( $links, $file ) {
 
 		$links = array_merge( $links, array( '<a href="http://wordpress.org/support/plugin/artiss-currency-converter">' . __( 'Support', 'artiss-currency-converter' ) . '</a>' ) ); 
 
-		$links = array_merge( $links, array( '<a href="https://github.com/dartiss/open-currency-converter">' . __( 'Github', 'artiss-currency-converter' ) . '</a>' ) );	
+		$links = array_merge( $links, array( '<a href="https://github.com/morehawes/open-currency-converter">' . __( 'Github', 'artiss-currency-converter' ) . '</a>' ) );	
 
 	}
 
@@ -221,30 +221,13 @@ function occ_help_screen( $screen, $tab = '' ) {
 		$help_text .= '<p><strong>' . __( 'For more information:', 'artiss-currency-converter' ) . '</strong></br>';
 		$help_text .= '📖 <a href="https://wordpress.org/plugins/artiss-currency-converter/">' . __( 'Plugin Documentation', 'artiss-currency-converter' ) . '</a></br>';
 		$help_text .= '📣 <a href="https://wordpress.org/support/plugin/artiss-currency-converter/">' . __( 'Support Forum', 'artiss-currency-converter' ) . '</a></br>';
-		$help_text .= '🐞 <a href="https://github.com/dartiss/open-currency-converter/issues">' . __( 'Report an issue or suggest an enhancement', 'artiss-currency-converter' ) . '</a></p>';	
+		$help_text .= '🐞 <a href="https://github.com/morehawes/open-currency-converter/issues">' . __( 'Report an issue or suggest an enhancement', 'artiss-currency-converter' ) . '</a></p>';	
 
 		$help_text .= '<p>💰 <a href="https://openexchangerates.org/">' . __( 'Open Exchange Rates', 'artiss-currency-converter' ) . '</a></p>';			
 
-		$help_text .= '<p>⭐️ <a href="https://wordpress.org/support/plugin/artiss-currency-converter/reviews/#new-post">' . __( 'Write a review', 'artiss-currency-converter' ) . '</a></br>';
-		$help_text .= '💳 <a href="https://artiss.blog/donate">' . __( 'Donate if you like this plugin', 'artiss-currency-converter' ) . '</a></p>';
+		$help_text .= '<p>⭐️ <a href="https://wordpress.org/support/plugin/artiss-currency-converter/reviews/#new-post">' . __( 'Write a review', 'artiss-currency-converter' ) . '</a></p>';
 
 	}
 
 	return $help_text;
 }
-
-/**
- * Show Admin Message
- *
- * Display message on the administration screen once 2 months away from the plugins' closure.
- */
-function occ_add_admin_notice() {
-
-	if ( gmdate( 'Ymd' ) >= '20241001' && is_admin() ) {
-		echo '<div class="notice notice-error"><p>';
-		echo __( sprintf( '⛔️ The Open Currency Converter plugin will be discontinued December 2024. After this time there will be no further updates, including security vulnerabilities. It is important that you disable it and find an alternative plugin before then. <a href="%s">Find out more here</a>.', 'https://wordpress.org/support/topic/important-please-read-before-posting-5/' ), 'artiss-currency-converter' );
-		echo '</p></div>';
-	}
-}
-
-add_action( 'admin_notices', 'occ_add_admin_notice' );

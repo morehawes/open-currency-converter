@@ -1,11 +1,10 @@
 === Open Currency Converter ===
-Contributors: dartiss
-Donate link: https://artiss.blog/donate
-Tags: adopt-me, cash, conversion, convert, currency, money
+Contributors: morehawes, dartiss
+Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.4.7
+Stable tag: 1.4.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,10 +13,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 
 🚀 If you have a wish to convert currencies "on the fly" within the text of a post or page then this is the plugin for you! It's free to download, free to use and advert free - if you think you have to pay for something you're doing it wrong!
-
-**Note:**
-**This plugin will no longer be updated, other than for critical security issues. During December 2024, it will be formally closed.**
-**[Find out more here](https://wordpress.org/support/topic/important-please-read-before-posting-5/), including, if you’re a developer, how you can adopt it.**
 
 So, let's say you run a UK based site and will refer to currencies in GBP. However, the majority of visitors are from the US, so you may have a wish to also show the dollar equivalent. Using this plugin you can do this without having to work out the conversion and then re-visit it in future to take into account conversion changes.
 
@@ -32,9 +27,7 @@ Key features include...
 * Administration screen allowing you to define defaults and to view current exchange rates
 * And much, much more!
 
-Iconography is courtesy of the very talented [Janki Rathod](https://www.fiverr.com/jankirathore) ♥️
-
-👉 Please visit the [Github page](https://github.com/dartiss/open-currency-converter "Github") for the latest code development, planned enhancements and known issues 👈
+👉 Please visit the [Github page](https://github.com/morehawes/open-currency-converter "Github") for the latest code development, planned enhancements and known issues 👈
 
 == Getting Started ==
 
@@ -157,6 +150,9 @@ Voila! It's ready to go.
 
 I use semantic versioning, with the first release being 1.0.
 
+= 1.4.8 =
+* Maintenance: The plugin has been adopted, so the adoption and shut-down notices have been removed, as well as various plugin meta updated for the new owner
+
 = 1.4.7 =
 * Maintenance: Added notices about the plugin closure
 
@@ -236,5 +232,5 @@ I use semantic versioning, with the first release being 1.0.
 
 == Upgrade Notice ==
 
-= 1.4.7 =
-* Maintenance: Added notices about the plugin closure
+= 1.4.8 =
+* Removed adoption notices
