@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Open Currency Converter
-Plugin URI: https://github.com/dartiss/open-currency-converter
+Plugin URI: https://github.com/morehawes/open-currency-converter
 Description: Convert currencies within the text of a post or page.
-Version: 1.4.7
-Author: David Artiss
-Author URI: https://artiss.blog
+Version: 1.4.8
+Author: Joe Hawes
+Author URI: https://www.morehawes.ca
 Text Domain: artiss-currency-converter
 */
 
@@ -18,7 +18,7 @@ Text Domain: artiss-currency-converter
 * @since	1.0
 */
 
-define( 'open_currency_converter_version', '1.4.6' );
+define( 'open_currency_converter_version', '1.4.8' );
 
 /**
 * Main Includes
