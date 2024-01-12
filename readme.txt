@@ -4,7 +4,7 @@ Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -150,6 +150,9 @@ Voila! It's ready to go.
 
 I use semantic versioning, with the first release being 1.0.
 
+= 1.4.9 =
+* Maintenance: Added deploy script and bumping version number.
+
 = 1.4.8 =
 * Maintenance: The plugin has been adopted, so the adoption and shut-down notices have been removed, as well as various plugin meta updated for the new owner
 
@@ -232,5 +235,5 @@ I use semantic versioning, with the first release being 1.0.
 
 == Upgrade Notice ==
 
-= 1.4.8 =
-* Removed adoption notices
+= 1.4.9 =
+* The plugin has been adopted!
