@@ -110,6 +110,11 @@ function occ_perform_conversion( $number = '', $from = '', $to = '', $dp = '' ) 
 
 	$rates_array = occ_get_rates( $options['rates_cache'] );
 
+	// Check for array
+	if( !is_array( $rates_array ) ) {
+		return;
+	}
+
 	if ( false !== $rates_array ) {
 
 		$from = $rates_array[ strtoupper( $from ) ];
