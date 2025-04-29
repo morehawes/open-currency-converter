@@ -21,42 +21,45 @@
  * @param  string $template        Output template.
  * @return string                  Output
  */
-function occ_convert_currency( $number = '', $from = '', $to = '', $dp = '', $template = '' ) {
+function occ_convert_currency($number = '', $from = '', $to = '', $dp = '', $template = '', $thousands_separator = '') {
 
-	$tag             = '%result%';
+	$tag = '%result%';
 	$suppress_errors = false;
 
 	// If no template has been provided, create a default one.
 
-	if ( '' === $template ) {
+	if ('' === $template) {
 		$template = $tag;
 	} else {
 		$suppress_errors = true;
 	}
 
-	if ( '' === $number ) {
+	if ('' === $number) {
 
 		// Report an error if no number was supplied.
 
-		$result = '#' . __( 'No number supplied for conversion', 'artiss-currency-converter' );
+		$result = '#' . __('No number supplied for conversion', 'artiss-currency-converter');
 
 	} else {
 
 		// Perform the conversion.
 
-		$result = occ_perform_conversion( $number, $from, $to, $dp );
+		$result = occ_perform_conversion($number, $from, $to, $dp, $thousands_separator);
+
 	}
 
 	// If using a template and an error is returned, return nothing. Otherwise, replace the figure in the template.
 
-	if ( '#' === substr( $result, 0, 1 ) ) {
-		if ( $suppress_errors ) {
-			return;
+	if (is_string($result)) {
+		if ('#' === substr($result, 0, 1)) {
+			if ($suppress_errors) {
+				return;
+			} else {
+				return '<span style="font-weight: bold; color: #f00;">' . __('Open Currency Converter Error: ', 'artiss-currency-converter') . substr($result, 1) . '</span>';
+			}
 		} else {
-			return '<span style="font-weight: bold; color: #f00;">' . __( 'Open Currency Converter Error: ', 'artiss-currency-converter' ) . substr( $result, 1 ) . '</span>';
+			return str_replace($tag, $result, $template);
 		}
-	} else {
-		return str_replace( $tag, $result, $template );
 	}
 }
 
@@ -74,75 +77,76 @@ function occ_convert_currency( $number = '', $from = '', $to = '', $dp = '', $te
  * @param  string $dp         Number of decimal points.
  * @return string             Result
  */
-function occ_perform_conversion( $number = '', $from = '', $to = '', $dp = '' ) {
-
-	$error   = '';
-	$result  = '';
+function occ_perform_conversion($number = '', $from = '', $to = '', $dp = '', $thousands_separator = '') {
+	$error = '';
+	$result = '';
 	$options = occ_get_options();
 
 	// Remove commas from number, if they exist.
 
-	if ( strpos( $number, ',' ) !== false ) {
-		$number = str_replace( ',', '', $number );
+	if (strpos($number, ',') !== false) {
+		$number = str_replace(',', '', $number);
 	}
 
 	// If any of the details are missing, get them from the default options that are set.
 
-	if ( '' === $from ) {
-		if ( defined( 'global_convert_from' ) ) {
+	if ('' === $from) {
+		if (defined('global_convert_from')) {
 			$from = global_convert_from;
 		} else {
 			$from = $options['from'];
 		}
 	}
-	if ( '' === $to ) {
-		if ( defined( 'global_convert_to' ) ) {
+	if ('' === $to) {
+		if (defined('global_convert_to')) {
 			$to = global_convert_to;
 		} else {
 			$to = $options['to'];
 		}
 	}
-	if ( '' === $dp ) {
+	if ('' === $dp) {
 		$dp = $options['dp'];
+	}
+	if ('' === $thousands_separator) {
+		$thousands_separator = $options['thousands_separator'];
 	}
 
 	// Get exchange rates from array.
 
-	$rates_array = occ_get_rates( $options['rates_cache'] );
+	$rates_array = occ_get_rates($options['rates_cache']);
 
-	if ( false !== $rates_array ) {
+	if (false !== $rates_array) {
 
-		$from = $rates_array[ strtoupper( $from ) ];
-		$to   = $rates_array[ strtoupper( $to ) ];
+		$from = $rates_array[strtoupper($from)];
+		$to = $rates_array[strtoupper($to)];
 
-		if ( ( '' === $from ) || ( '' === $to ) ) {
+		if (('' === $from) || ('' === $to)) {
 
-			$error = '#' . __( 'Could not fetch one of the required exchange rates', 'artiss-currency-converter' );
+			$error = '#' . __('Could not fetch one of the required exchange rates', 'artiss-currency-converter');
 
 		} else {
 
 			// If the DP parameter is to match then calculcate the number of decimal places that the passed value is.
 
-			if ( ! is_numeric( $dp ) ) {
-				$decimal_pos = strpos( $number, '.' );
-				if ( ! $decimal_pos ) {
+			if (! is_numeric($dp)) {
+				$decimal_pos = strpos($number, '.');
+				if (! $decimal_pos) {
 					$dp = 0;
 				} else {
-					$dp = strlen( $number ) - ( $decimal_pos + 1 );
+					$dp = strlen($number) - ($decimal_pos + 1);
 				}
 			}
 
 			// Perform the conversion.
 
-			$result = number_format( round( $number * ( $to * ( 1 / $from ) ), $dp ), $dp, '.', ',' );
-
+			$result = number_format(round($number * ($to * (1 / $from)), $dp), $dp, '.', $thousands_separator);
 		}
 	} else {
 
 		$error = $rates_array;
 	}
 
-	if ( '' !== $error ) {
+	if ('' !== $error) {
 		$result = $error;
 	}
 	return $result;

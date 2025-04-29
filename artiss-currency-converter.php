@@ -3,7 +3,7 @@
 Plugin Name: Open Currency Converter
 Plugin URI: https://github.com/morehawes/open-currency-converter
 Description: Convert currencies within the text of a post or page.
-Version: 1.4.9
+Version: 1.5.0
 Author: Joe Hawes
 Author URI: https://www.morehawes.ca
 Text Domain: artiss-currency-converter
@@ -18,7 +18,7 @@ Text Domain: artiss-currency-converter
  * @since	1.0
  */
 
-define('open_currency_converter_version', '1.4.9');
+define('open_currency_converter_version', '1.5.0');
 
 /**
  * Main Includes

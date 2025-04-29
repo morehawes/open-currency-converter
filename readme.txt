@@ -4,7 +4,7 @@ Tags: cash, conversion, convert, currency, money
 Requires at least: 4.6
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.4.9
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,9 +49,9 @@ To get your App Key...
 
 To add to your site simply use the `[convert]` shortcode. For example...
 
-`[convert number=49.99 from="gbp" to="usd"]`
+`[convert number="100" from="gbp" to="cad"]`
 
-This would convert 49.99 GBP to USD.
+This would convert 100 GBP to CAD.
 
 ⚠️ **Disclaimer**
 
@@ -75,6 +75,8 @@ The shortcode of '[convert]' has the following parameters that you may specify..
 * **to** - The currency code that you wish to convert to (see the admin options for a list of valid codes). If you do not specify this value then the default from the options screen will be used.
 * **dp** - How many decimal places the output should be. This should be numeric or the word "match". The latter is the default and will mean that the output will match the number of decimal places that the **number** was.
 * **template** - See the later section, "Using Templates", for further information
+* **thousands_separator** - The character that should be used to separate thousands in the output. This is a single character, such as a comma or period. If not specified then the default from the options screen will be used.
+
 
 Example of use are...
 
@@ -87,6 +89,10 @@ This would convert 49.99 from UK pounds to US dollars and output the result to 2
 This would convert 50 from US dollars to UK pounds and output the result without any decimal places.
 
 If the conversion can't be done then an appropriate error message will be output instead. If you wish to suppress these messages then you need to use a template (see the later section on this) - in this case no output will be generated in the case of an error.
+
+You can specify the thousands separator either through the options screen or by using the `thousands_separator` parameter (default is a comma). This will be used to format the output of the conversion result:
+
+`[convert number=50 from="usd" to="gbp" thousands_separator="."]`
 
 == 🧩 Using Templates ==
 
@@ -148,7 +154,8 @@ Voila! It's ready to go.
 
 == Changelog ==
 
-I use semantic versioning, with the first release being 1.0.
+= 1.5.0 =
+* Enhancement: Added thousands_separator parameter to shortcode and options screen. Thanks to [samlaflam](https://wordpress.org/support/users/samlaflam/) for the [suggestion](https://wordpress.org/support/topic/remove-or-change-thousands-indicator-2/).
 
 = 1.4.9 =
 * Maintenance: Added deploy script and bumping version number.
