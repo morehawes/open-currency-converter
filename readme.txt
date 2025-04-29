@@ -94,6 +94,7 @@ You can specify the thousands separator either through the options screen or by 
 
 `[convert number=50 from="usd" to="gbp" thousands_separator="."]`
 
+
 == 🧩 Using Templates ==
 
 The template option allows you to specify other information to be output along with the conversion result. None of the template will be output if any error occurs, including any error messages, allowing you to suppress any conversion text in the case of a problem.
